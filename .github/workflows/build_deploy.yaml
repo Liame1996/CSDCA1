@@ -4,7 +4,7 @@ on:
     branches:
       -master
   pull_request:
-    types: [opened, sychronize, reoped]
+    types: [opened, sychronize, reopend]
 
 jobs:
   build_unit_test:
