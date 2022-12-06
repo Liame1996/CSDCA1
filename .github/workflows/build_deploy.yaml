@@ -1,7 +1,7 @@
 name: Build BPCalculator
 
 on:
-  worflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build_unit_test:
