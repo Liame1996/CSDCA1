@@ -16,8 +16,7 @@ jobs:
     - name: Run unit tests
       run: dotnet test CA1CSDUnitTest/CA1CDSUnitTest.csproj --collect "Code coverage" 
 
-jobs:
-  build:
+  sonarcloud:
     name: Build and analyze
     runs-on: windows-latest
     steps:
