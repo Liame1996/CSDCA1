@@ -16,14 +16,6 @@ jobs:
     - name: Run unit tests
       run: dotnet test CA1CSDUnitTest/CA1CDSUnitTest.csproj --collect "Code coverage" 
 
-name: SonarCloud
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
-    
 jobs:
   build:
     name: Build and analyze
