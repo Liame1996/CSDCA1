@@ -1,9 +1,10 @@
 name: Build BPCalculator
-
 on:
   push:
     branches:
       -master
+  pull_requests:
+    types: [opened, sychronize, reoped]
 
 jobs:
   build_unit_test:
