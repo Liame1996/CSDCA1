@@ -16,4 +16,4 @@ jobs:
     - name: Build for Release
       run: dotnet build --configuration Release
     - name: Run unit tests
-      run: dotnet test CA1CSDUnitTest/CA1CDSUnitTest.csproj --collect "Code coverage" 
+      run: dotnet test CA1CSDUnitTest/CA1CSDUnitTest.csproj --collect "Code coverage" 
