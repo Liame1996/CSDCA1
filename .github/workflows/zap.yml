@@ -1,0 +1,32 @@
+# OWASP ZAP baseline scan in docker container
+# pull docker image
+# run baseline scan on URI and store test result file via volume mounted on container
+
+name: BP-Calculator-ZAP-scan
+
+env:
+  URI: https://bp-calculator.azurewebsites.net         
+  
+on:
+  workflow_dispatch:                  # manually triggered
+
+jobs:
+
+  zap_baseline_scan:
+
+    runs-on: linux-latest
+
+    steps:
+
+    - name: Pull Docker image for ZAP
+      run: docker pull owasp/zap2docker-stable
+
+    # Run baseline scan to 
+    - name: Run baseline scan
+      run: docker run -v /report:/zap/wrk/:rw --user root -t owasp/zap2docker-stable zap-baseline.py -t ${{env.URI}} -I -r zapreport.html
+  
+    - uses: actions/upload-artifact@v2
+      name: upload ZAP report
+      with:
+        name: ZAPreport
+        path: /report/zapreport.html
