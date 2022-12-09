@@ -8,7 +8,6 @@ env:
   URI: https://bp-calculator.azurewebsites.net         
   
 on:
-  on:
   push:
     branches: ["master"]
   pull_request:
