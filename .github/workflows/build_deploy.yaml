@@ -3,8 +3,6 @@ name: Build BPCalculator
 on:
   push:
     branches: ["master"]
-  pull_request:
-    branches: [ "master" ]
 
 
 jobs:
@@ -17,6 +15,16 @@ jobs:
       run: dotnet build --configuration Release
     - name: Run unit tests
       run: dotnet test CA1CSDUnitTest/CA1CSDUnitTest.csproj --collect "Code coverage" 
+     
+  build_bdd_test:
+    name: Acceptance Test
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build for Release
+      run: dotnet build --configuration Release
+    - name: Run unit tests
+      run: dotnet test CA1CSDAcceeptanceTest/CA1CSDAcceptanceTest.csproj
 
   sonarcloud_analysis:
     name: Sonarcloud Analysis
@@ -58,3 +66,7 @@ jobs:
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"Liame1996_CSDCA1" /o:"liame1996" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
         dotnet build
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+  
+
+  
