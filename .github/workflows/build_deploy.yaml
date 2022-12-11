@@ -22,7 +22,7 @@ jobs:
       
       # Run Selenium tests
     - name: Run Selenium tests
-      run: dotnet test ${{ env.bp-calculator.azurewebsites.net }}/myapp/SeleniumTest.dll /Settings:SeleniumTest.runsettings --logger:"trx;LogFileName=selenium.trx"
+      run: dotnet test ${{ env.bp-calculator.azurewebsites.net }} /Settings:SeleniumTest.runsettings --logger:"trx;LogFileName=selenium.trx"
      
   sonarcloud_analysis:
     name: Sonarcloud Analysis
