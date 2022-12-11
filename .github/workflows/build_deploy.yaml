@@ -16,11 +16,12 @@ jobs:
     - name: Run unit tests
       run: dotnet test CA1CSDUnitTest/CA1CSDUnitTest.csproj --collect "Code coverage" 
     - name: Run unit tests
-      run: dotnet test CA1CSDAcceeptanceTest/CA1CSDAcceptanceTest.csproj
+      run: dotnet test CA1CSDAcceptanceTest/CA1CSDAcceptanceTest.csproj
      
   sonarcloud_analysis:
     name: Sonarcloud Analysis
     needs: build_unit_test
+    runs-on: windows-latest
     runs-on: windows-latest
     steps:
     - name: Set up JDK 11
