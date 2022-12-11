@@ -15,17 +15,9 @@ jobs:
       run: dotnet build --configuration Release
     - name: Run unit tests
       run: dotnet test CA1CSDUnitTest/CA1CSDUnitTest.csproj --collect "Code coverage" 
-     
-  build_bdd_test:
-    name: Acceptance Test
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build for Release
-      run: dotnet build --configuration Release
     - name: Run unit tests
       run: dotnet test CA1CSDAcceeptanceTest/CA1CSDAcceptanceTest.csproj
-
+     
   sonarcloud_analysis:
     name: Sonarcloud Analysis
     needs: build_unit_test
@@ -64,8 +56,8 @@ jobs:
       shell: powershell
       run: |
         .\.sonar\scanner\dotnet-sonarscanner begin /k:"Liame1996_CSDCA1" /o:"liame1996" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-        dotnet build --no-incremental
-        dotnet test --collect "Code Coverage"
+        dotnet build CA1CSDUnitTest/CA1CSDUnitTest.csproj --no-incremental
+        dotnet test CA1CSDUnitTest/CA1CSDUnitTest.csproj --collect "Code Coverage"
         .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
   
