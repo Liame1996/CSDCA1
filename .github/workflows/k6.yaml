@@ -8,7 +8,7 @@ jobs:
   k6_load_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkoutv2
+      - uses: actions/checkout@v2
       - name: Use Docker Image
         run: docker pull loadimpact/k6
       - name: Run k6 load test, capture report
