@@ -16,7 +16,7 @@ jobs:
         id: OWASP-Dep-Check
         with:
           project: 'BP-Calculator'
-          path: 'https://bp-calculator.azurewebsites.net'
+          path: 'bp-calculator.azurewebsites.net'
           format: 'HTML'
           args: > 
             --failOnCVSS 8
