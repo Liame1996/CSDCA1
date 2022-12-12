@@ -4,7 +4,6 @@ on:
   push:
     branches: ["master"]
 
-
 jobs:
   build_unit_test:
     name: build and test
@@ -20,10 +19,9 @@ jobs:
     - name: Run acceptance tests
       run: dotnet test CA1CSDAcceptanceTest/CA1CSDAcceptanceTest.csproj
       
-      # Run Selenium tests
-    - name: Run Selenium tests
-      run: dotnet test ${{ env.bp-calculator.azurewebsites.net }} /Settings:SeleniumTest.runsettings --logger:"trx;LogFileName=selenium.trx"
-     
+    # Run Selenium tests
+    # - name: Run Selenium tests
+    #  run: dotnet test CSDCA1SelTest/CSDCA1SelTest 
   sonarcloud_analysis:
     name: Sonarcloud Analysis
     needs: build_unit_test
