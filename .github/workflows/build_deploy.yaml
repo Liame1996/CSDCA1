@@ -34,7 +34,7 @@ jobs:
 
     # publish web app ready for deployment
     - name: Publish web app
-      run: dotnet publish -c Release -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp
+      run: dotnet publish -c Release -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     
     # Deploy to Azure app service to staging slot using publish profile for staging slot
     - name: Run Azure webapp deploy action using publish profile credentials
