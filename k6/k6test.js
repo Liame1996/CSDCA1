@@ -7,9 +7,9 @@ export let options = {
   //point to 20 virtual users over one min, keep them there for one min
   //reduce to zero over a min to test the load.  
   stages: [
-    { duration: "1m:", target: 20 },
-    { duration: "1m:", target: 20 },
-    { duration: "1m:", target: 0 }
+    { duration: "1m", target: 20 },
+    { duration: "1m", target: 20 },
+    { duration: "1m", target: 0 }
 
   ],
   
