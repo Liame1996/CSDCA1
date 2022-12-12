@@ -8,6 +8,9 @@ jobs:
   dependency_check:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
       - name: Depcheck
         uses: dependency-check/Dependency-Check_Action@main
         id: OWASP-Dep-Check
