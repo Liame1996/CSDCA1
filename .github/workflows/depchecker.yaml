@@ -18,8 +18,8 @@ jobs:
           project: 'BP-Calculator'
           path: 'https://bp-calculator.azurewebsites.net'
           format: 'HTML'
-          args: >
-            --failOnCVSS 8
+          args: > 
+          --failOnCVSS 8
             
      - name: Test Results
        uses: actions/upload-artifact@master
