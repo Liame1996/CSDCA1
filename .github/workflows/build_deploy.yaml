@@ -27,7 +27,7 @@ jobs:
       url: https://bp-calculator.azurewebsites.net                                
     runs-on: windows-latest
     env:
-      AZURE_WEBAPP_NAME: BP-Calculator            # set this to your application's name
+      AZURE_WEBAPP_NAME: 'BP-Calculator'            # set this to your application's name
       AZURE_WEBAPP_PACKAGE_PATH: 'bp-calculator.azurewebsites.net'              # set this to the path to your web app project
     steps:
     - uses: actions/checkout@v2
