@@ -7,36 +7,36 @@ on:
 jobs:
   staging:
   
-  name: Deploy to Staging
-  environment:
-    name: Staging
-    url: https://bp-calculator-bp-calculator-staging.azurewebsites.net
-    
-  runs-on: ubuntu-latest
-  
-  steps:
-  - uses: actions/checkout@v2
-  
-  - run: env
-  - name: Setup .Net Core
-    uses: actions/setup-dotnet@v1
-    with:
-        dotnet-version: '5.0.100'
-    
-  - name: Build with dotnet
-    run: dotnet build --configuration Release
-    
-  - name: dotnet published
-    run: |
-        dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/dotnetweb
+    name: Deploy to Staging
+    environment:
+      name: Staging
+      url: https://bp-calculator-bp-calculator-staging.azurewebsites.net
         
-  -name: 'Deploy to https://bp-calculator-bp-calculator-staging.azurewebsites.net'
-   uses: azure/webapps-deploy@v2
-   with:
-     app-name: BP-Calculator
-     publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-     package: ${{env.DOTNET_ROOT}}/dotnetweb
-     slot-name: staging
+    runs-on: ubuntu-latest
+      
+    steps:
+    - uses: actions/checkout@v2
+    
+    - run: env
+    - name: Setup .Net Core
+      uses: actions/setup-dotnet@v1
+      with:
+          dotnet-version: '5.0.100'
+      
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+       
+    - name: dotnet published
+      run: |
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/dotnetweb
+          
+    -name: 'Deploy to https://bp-calculator-bp-calculator-staging.azurewebsites.net'
+     uses: azure/webapps-deploy@v2
+     with:
+       app-name: BP-Calculator
+       publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+       package: ${{env.DOTNET_ROOT}}/dotnetweb
+       slot-name: staging
      
   build_unit_test:
     name: build and test
