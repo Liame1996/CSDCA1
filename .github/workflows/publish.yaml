@@ -5,7 +5,6 @@ on:
     types: [published]
     push:
         branches: ["master"]
-        default: staging
 jobs:
   staging:
   
