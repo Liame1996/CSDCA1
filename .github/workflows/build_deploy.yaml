@@ -58,6 +58,11 @@ jobs:
     #    name: Selenium Tests Results
     #    path: reports/selenium.trx
     
+    # blue/green
+    #- name: swap QA and production slots
+    #  run: |
+    #    az webapp deployment slot swap -n BP-Calculator -g ca1csd --slot stage --target-slot production
+    
   sonarcloud_analysis:
     name: Sonarcloud Analysis
     needs: build_unit_test
