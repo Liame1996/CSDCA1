@@ -1,7 +1,3 @@
-# OWASP ZAP baseline scan in docker container
-# pull docker image
-# run baseline scan on URI and store test result file via volume mounted on container
-
 name: BP-Calculator-ZAP-scan
 
 env:
