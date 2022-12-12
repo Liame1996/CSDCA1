@@ -1,26 +1,22 @@
-name: OWASP Dep Checker
+name: k6 BP-Calculator
 
 on:
   push:
     branches: [master]  #automatic run when uploaded
 
 jobs:
-  dependency_check:
+  k6_load_test:
     runs-on: ubuntu-latest
     steps:
-    - name: Depcheck
-      uses: dependency-check/Dependency-Check_Action@main
-      id: OWASP-Dep-Check
+    - uses: action/checkoutv2
+    
+    - name: Use Docker Image
+      run: docker pull loadimpact/k6
+      
+    - name: Run k6 load test, capture report
+      run: docker run -i loadimpact/k6 run - <k6/k6test.js > k6report.txt
+    
+    - uses: action/upload-artifact@v2
       with:
-        project: 'BP-Calculator'
-        path: 'https://bp-calculator.azurewebsites.net'
-        format: 'HTML'
-        args: >
-          --failOnCVSS 8
-		
-    - name: Test Results
-      uses: actions/upload-artifact@master
-      with:
-        name: Depcheck report
-        path:{{github.workspace}}/reports
-		
+        name: report_for_k6
+        path: k6report.txt
