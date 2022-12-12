@@ -19,11 +19,10 @@ jobs:
           path: 'https://bp-calculator.azurewebsites.net'
           format: 'HTML'
           args: >
-            --failOnCVSS 8            
-		
+            --failOnCVSS 8
+            
     - name: Test Results
       uses: actions/upload-artifact@master
       with:
         name: Depcheck report
         path:{{github.workspace}}/reports
-		
