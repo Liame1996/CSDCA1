@@ -3,7 +3,7 @@ name: OWASP Dep Checker
 on:
   push:
     branches: [master]  #automatic run when uploaded
-	
+
 jobs:
   dependency_check:
     runs-on: ubuntu-latest
