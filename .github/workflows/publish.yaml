@@ -6,7 +6,6 @@ on:
         
 jobs:
   staging:
-  
     name: Deploy to Staging
     environment:
       name: Staging
