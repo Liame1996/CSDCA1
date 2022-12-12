@@ -20,13 +20,8 @@ jobs:
     - name: Setup .Net Core
       uses: actions/setup-dotnet@v1
       with:
+        packagetype: 'sdk'
         dotnet-version: 5.0.x
-        
-    - task: UseDotNet@2
-      displayname: Use .Net 5.0
-      inputs:
-        packageType: 'sdk'
-        version: '5.0.x'
     
     - name: Build with dotnet
       run: dotnet build --configuration Release
