@@ -16,4 +16,4 @@ jobs:
       - uses: action/upload-artifact@v2
         with:
           name: report_for_k6
-          path: k6report.txt
+          path: output/k6report.txt
