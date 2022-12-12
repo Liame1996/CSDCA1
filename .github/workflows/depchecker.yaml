@@ -21,8 +21,8 @@ jobs:
           args: > 
             --failOnCVSS 8
             
-       - name: Test Results
-         uses: actions/upload-artifact@master
-         with:
-           name: Depcheck report
-           path: /reports
+      - name: Test Results
+        uses: actions/upload-artifact@master
+        with:
+          name: Depcheck report
+          path: /reports
