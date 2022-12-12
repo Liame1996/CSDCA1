@@ -1,4 +1,4 @@
-name: k6 BP-Calculator
+name: k6 testing
 
 on:
   push:
@@ -8,15 +8,12 @@ jobs:
   k6_load_test:
     runs-on: ubuntu-latest
     steps:
-    - uses: action/checkoutv2
-    
-    - name: Use Docker Image
-      run: docker pull loadimpact/k6
-      
-    - name: Run k6 load test, capture report
-      run: docker run -i loadimpact/k6 run - <k6/k6test.js > k6report.txt
-    
-    - uses: action/upload-artifact@v2
-      with:
-        name: report_for_k6
-        path: k6report.txt
+      - uses: actions/checkoutv2
+      - name: Use Docker Image
+        run: docker pull loadimpact/k6
+      - name: Run k6 load test, capture report
+        run: docker run -i loadimpact/k6 run - <k6/k6test.js > k6report.txt
+      - uses: action/upload-artifact@v2
+        with:
+          name: report_for_k6
+          path: k6report.txt
